@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee_Contacts</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/add">ADD</a></li>
+        <li><a href="/search">SEARCH</a></li>
+        <li><a href="/update">UPDATE</a></li>
+        <li><a href="/delete">DELETE</a></li>
+      </ul>
+    </nav>
+    {{#if msg}}
+      <div class="alert success">
+        <span class="closebtn">&times;</span>
+        <strong>Data Updated in DataBase</strong>
+      </div>
+    {{/if}}
+    {{#if checkmesg}}
+      <div class="alert error">
+        <span class="closebtn">&times;</span>
+        <strong>Name and Phone_no already Exist in DataBase!</strong>
+      </div>
+    {{/if}}
+    <form action="/updatedata" class="employee-contact-form">
+      <h2>Update Employee Details</h2>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required />
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+    <hr>
+    {{#each results}}
+       <form action="/updateAddEmployee" class="employee-contact-form">
+      <h1>Update Contact Form</h1>
+      <hr />
+      <input type="hidden" name="id" value="{{this.EmpId}}">
+      <input type="hidden" name="c1" value="{{this.c1}}">
+      <input type="hidden" name="c2" value="{{this.c2}}">
+      <div class="form-group">
+        <label for="name">Employee Full Name</label>
+        <input
+          type="text"
+          placeholder="Type your answer here"
+          name="name"
+          id="name"
+          value="{{this.EmpName}}"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="job">Job Title</label>
+        <input
+          type="text"
+          placeholder="Type your answer here"
+          name="job"
+          id="job"
+          value="{{this.JobTitle}}"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" name="phone" id="phone" required value="{{this.Phone}}" />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required  value="{{this.Email}}"/>
+      </div>
+      <div class="form-group">
+        <label for="adress">Address</label>
+        <textarea
+          placeholder="Type your answer here"
+          name="adress"
+          id="adress"
+          aria-describedby="descriptive text"
+          required
+        >{{this.adress}}</textarea>
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input
+          type="text"
+          placeholder="Type your answer here"
+          name="city"
+          id="city"
+          required
+          value="{{this.city}}"
+        />
+      </div>
+      <div class="form-group">
+        <label for="state">State</label>
+        <input
+          type="text"
+          placeholder="Type your answer here"
+          name="state"
+          id="state"
+          required
+          value="{{this.state}}"
+        />
+      </div>
+      <h2>Emergency Contacts</h2>
+      <div class="form-group">
+        <label for="c1name">Primary Emergency Contact</label>
+        <input
+          type="text"
+          placeholder="Type your answer here"
+          name="c1name"
+          id="c1name"
+          required
+          value="{{this.Name1}}"
+        />
+      </div>
+      <div class="form-group">
+        <label for="c1phone">Phone Number</label>
+        <input type="tel" name="c1phone" id="c1phone" required  value="{{this.Phone1}}"/>
+      </div>
+      <div class="form-group">
+        <label for="c1relation">Relationship</label>
+        <input
+          type="text"
+          placeholder="Type your answer here"
+          name="c1relation"
+          id="c1relation"
+          required
+          value="{{this.Relationship1}}"
+        />
+      </div>
+      <div class="form-group">
+        <label for="c2name">Secondary Emergency Contact</label>
+        <input
+          type="text"
+          placeholder="Type your answer here"
+          name="c2name"
+          id="c2name"
+          required
+          value="{{this.Name2}}"
+        />
+      </div>
+      <div class="form-group">
+        <label for="c2phone">Phone Number</label>
+        <input type="tel" name="c2phone" id="c2phone" required value="{{this.Phone2}}"/>
+      </div>
+      <div class="form-group">
+        <label for="c2relation">Relationship</label>
+        <input
+          type="text"
+          placeholder="Type your answer here"
+          name="c2relation"
+          id="c2relation"
+          required
+          value="{{this.Relationship2}}"
+        />
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+    {{/each}}
+</body>
+</html>

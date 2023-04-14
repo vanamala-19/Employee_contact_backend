@@ -1,0 +1,69 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee_Contacts</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/add">ADD</a></li>
+        <li><a href="/search">SEARCH</a></li>
+        <li><a href="/update">UPDATE</a></li>
+        <li><a href="/delete">DELETE</a></li>
+      </ul>
+    </nav>
+    <h1>Employee Details</h1>
+    <div class="grid-container">
+      {{#each results}}
+        <div class="grid-item">
+          <h4>Name : {{EmpName}}</h4>
+          <p>JobTitle : {{JobTitle}}</p>
+          <p>Phone_no : {{Phone}}</p>
+          <p>Email : {{Email}}</p>
+          <p>Adress : {{adress}}</p>
+          <p>City : {{city}}</p>
+          <p>State : {{state}}</p>
+          <h1>Contacts:</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Phone_no</th>
+                <th>Relationship</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{Name1}}</td>
+                <td>{{Phone1}}</td>
+                <td>{{Relationship1}}</td>
+              </tr>
+              <tr>
+                <td>{{Name2}}</td>
+                <td>{{Phone2}}</td>
+                <td>{{Relationship2}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      {{/each}}
+    </div>
+    <div class="pagination">
+      {{#if prevPage}}
+        <button
+          onclick="window.location.href='/{{prevPage}}'"
+        >Prev</button>
+      {{/if}}
+      {{#if nextPage}}
+        <button
+          onclick="window.location.href='/{{nextPage}}'"
+        >Next</button>
+      {{/if}}
+    </div>
+
+  </body>
+</html>

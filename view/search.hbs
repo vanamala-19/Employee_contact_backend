@@ -1,0 +1,80 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee_Contacts</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/add">ADD</a></li>
+        <li><a href="/search">SEARCH</a></li>
+        <li><a href="/update">UPDATE</a></li>
+        <li><a href="/delete">DELETE</a></li>
+      </ul>
+    </nav>
+    {{#if checkmesg}}
+      <div class="alert error">
+        <span class="closebtn">&times;</span>
+        <strong>Name and Phone_no already Exist in DataBase!</strong>
+      </div>
+    {{/if}}
+    <form action="/searchdata" class="employee-contact-form">
+      <h2>Search Employee Details</h2>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required />
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+    <hr />
+    <div class="row">
+      {{#each results}}
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">Name : {{EmpName}}</div>
+            <div class="card-body">
+              <p class="card-text">JobTitle : {{JobTitle}}</p>
+              <p class="card-text">Phone_no : {{Phone}}</p>
+              <p class="card-text">Email : {{Email}}</p>
+              <p class="card-text">Adress : {{adress}}</p>
+              <p class="card-text">City : {{city}}</p>
+              <p class="card-text">State : {{state}}</p>
+              <h5 class="card-title">Contacts</h5>
+              <ol>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Phone_no</th>
+                      <th>Relationship</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{{Name1}}</td>
+                      <td>{{Phone1}}</td>
+                      <td>{{Relationship1}}</td>
+                    </tr>
+                    <tr>
+                      <td>{{Name2}}</td>
+                      <td>{{Phone2}}</td>
+                      <td>{{Relationship2}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </ol>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </body>
+</html>
